@@ -54,8 +54,8 @@ class SuckRaidersMod(loader.Module):
     async def setsrcmd(self, message):
         """Настройки модуля SuckRaiders.Использовать: .setsr <kick/ban/mute/clear>;"""
         if not message.is_private:
-            ar = self.db.get("AntiRaid", "ar", [])
-            sets = self.db.get("AntiRaid", "sets", {})
+            ar = self.db.get("SuckRaiders", "ar", [])
+            sets = self.db.get("SuckRaiders", "sets", {})
             chatid = str(message.chat_id)
             args = utils.get_args_raw(message)
             if chatid in ar:
