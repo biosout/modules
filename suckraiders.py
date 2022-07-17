@@ -89,8 +89,8 @@ class SuckRaidersMod(loader.Module):
     async def watcher(self, message):
         """мда"""
         try:
-            ar = self.db.get("AntiRaid", "ar", [])
-            sets = self.db.get("AntiRaid", "sets", {})
+            ar = self.db.get("SuckRaiders", "ar", [])
+            sets = self.db.get("SuckRaiders", "sets", {})
             chatid = str(message.chat_id)
             if chatid not in ar: return
 
@@ -103,5 +103,5 @@ class SuckRaidersMod(loader.Module):
                 elif sets[chatid]["action"] == "mute":
                     await message.client(eb(int(chatid), user.id, cb(until_date=True, send_messages=True)))
                 sets[chatid].update({"stats": sets[chatid]["stats"] + 1})
-                return self.db.set("AntiRaid", "sets", sets)
+                return self.db.set("SuckRaiders", "sets", sets)
         except: pass
